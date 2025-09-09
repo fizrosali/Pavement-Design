@@ -1,7 +1,6 @@
-
 import React from 'react';
 import { PavementStructure } from '../types';
-import { LAYER_COLORS } from '../constants';
+import { LAYER_COLORS, LAYER_PROPERTIES } from '../constants';
 
 interface PavementDiagramProps {
   structure: PavementStructure;
@@ -9,6 +8,17 @@ interface PavementDiagramProps {
 
 const PavementDiagram: React.FC<PavementDiagramProps> = ({ structure }) => {
   const totalThickness = structure.layers.reduce((sum, layer) => sum + layer.thickness, 0);
+
+  const generateTooltip = (code: string): string => {
+    const properties = LAYER_PROPERTIES[code];
+    if (!properties) {
+      const fallbackLayer = structure.layers.find(l => l.code === code);
+      return fallbackLayer ? fallbackLayer.material : 'Unknown Layer';
+    }
+    return Object.entries(properties)
+      .map(([key, value]) => `${key}: ${value}`)
+      .join('\n');
+  };
 
   return (
     <div className="border border-slate-200 rounded-lg p-4">
@@ -18,13 +28,14 @@ const PavementDiagram: React.FC<PavementDiagramProps> = ({ structure }) => {
           const heightPercentage = (layer.thickness / totalThickness) * 100;
           const minHeight = 40; // min pixels height for readability
           const colorClass = LAYER_COLORS[layer.code] || 'bg-gray-400 text-black';
+          const tooltipText = generateTooltip(layer.code);
           
           return (
             <div
               key={index}
               className={`p-2 flex justify-between items-center text-sm transition-all duration-300 ${colorClass}`}
               style={{ minHeight: `${minHeight}px`, flexGrow: heightPercentage }}
-              title={`${layer.material}`}
+              title={tooltipText}
             >
               <span className="font-bold">{layer.code}</span>
               <span>{layer.material}</span>

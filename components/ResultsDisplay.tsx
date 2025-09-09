@@ -1,7 +1,7 @@
-
 import React from 'react';
 import { DesignResult } from '../types';
 import PavementDiagram from './PavementDiagram';
+import { LAYER_COLORS } from '../constants';
 
 interface ResultsDisplayProps {
   results: DesignResult | null;
@@ -56,6 +56,18 @@ const ResultsDisplay: React.FC<ResultsDisplayProps> = ({ results }) => {
             <p className="text-red-600 text-sm mt-2">Please review the ATJ 5/85 document for special cases or consider sub-grade improvement.</p>
           </div>
         )}
+      </div>
+
+      <div className="pt-6 border-t border-slate-200">
+        <h4 className="text-lg font-semibold mb-3 text-slate-700">Layer Color Legend</h4>
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-x-4 gap-y-2">
+          {Object.entries(LAYER_COLORS).map(([code, colorClass]) => (
+            <div key={code} className="flex items-center space-x-3">
+              <div className={`w-5 h-5 rounded-sm border border-slate-300 ${colorClass.split(' ')[0]}`} />
+              <span className="text-sm text-slate-600 font-mono">{code}</span>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

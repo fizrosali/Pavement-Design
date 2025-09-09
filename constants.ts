@@ -1,4 +1,3 @@
-
 import { PavementStructure } from './types';
 
 export const CV_CLASSES = ['CV1', 'CV2', 'CV3', 'CV4', 'CV5', 'CV6', 'CV7', 'CV8', 'CV9'];
@@ -49,6 +48,50 @@ export const LAYER_COLORS: { [key: string]: string } = {
   GSB: 'bg-orange-400 text-gray-800',
   STB1: 'bg-blue-300 text-gray-800',
   STB2: 'bg-cyan-300 text-gray-800',
+};
+
+// From ATJ 5/85 Sections 2.5.1, 2.5.3, 2.5.4
+export const LAYER_PROPERTIES: { [code: string]: { [prop: string]: string } } = {
+  BSC: {
+    'Material': 'Bituminous Surface Course (AC 10/14)',
+    'Elastic Modulus': '1440 MPa @ 35°C',
+    'Poisson\'s Ratio': '0.40 @ 35°C',
+  },
+  BC: {
+    'Material': 'Bituminous Binder Course (AC 28)',
+    'Elastic Modulus': '1920 MPa @ 35°C',
+    'Poisson\'s Ratio': '0.40 @ 35°C',
+  },
+  BB: {
+    'Material': 'Bituminous Road Base (AC 28)',
+    'Elastic Modulus': '2400 MPa @ 25°C',
+    'Poisson\'s Ratio': '0.35 @ 25°C',
+  },
+  BCBB: {
+    'Material': 'Bituminous Binder/Base Course (AC 28)',
+    'Elastic Modulus': '1920-2400 MPa',
+    'Poisson\'s Ratio': '0.35-0.40',
+  },
+  CAB: {
+    'Material': 'Crushed Aggregate Road Base',
+    'Elastic Modulus': 'Approx. 350 MPa',
+    'Poisson\'s Ratio': 'Approx. 0.35',
+  },
+  GSB: {
+    'Material': 'Granular Sub-Base',
+    'Elastic Modulus': '150-250 MPa',
+    'Poisson\'s Ratio': 'Approx. 0.35',
+  },
+  STB1: {
+    'Material': 'Stabilised Base (3-5% Portland cement)',
+    'Elastic Modulus': '1800 MPa',
+    'Poisson\'s Ratio': '0.40',
+  },
+  STB2: {
+    'Material': 'Stabilised Base (Bituminous emulsion/foamed bitumen)',
+    'Elastic Modulus': '1200 MPa',
+    'Poisson\'s Ratio': '0.35',
+  },
 };
 
 
