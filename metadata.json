@@ -1,0 +1,5 @@
+{
+  "name": "ATJ 5/85 Pavement Design Calculator",
+  "description": "An interactive web application for designing flexible pavements based on the Malaysian JKR's ATJ 5/85 (Pindaan 2013) manual. The app calculates design traffic (ESALs) and recommends pavement structures based on traffic, sub-grade strength, and road geometry inputs.",
+  "requestFramePermissions": []
+}
